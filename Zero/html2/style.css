@@ -1,0 +1,117 @@
+.main {
+  width: 600px;
+  height: 320px;
+  background-color: aqua;
+}
+
+.nav {
+  width: 1px;
+  height: 200px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.middle {
+  display: flex;
+  width: 300px;
+  height: 100px;
+  background-color: rgba(110, 57, 255, 0.7);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+}
+
+.radius {
+  border-radius: 10px;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.m2 {
+  width: 600px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.left {
+  display: flex;
+  width: 220px;
+  height: 80px;
+  background-color: rgba(225, 55, 220, 0.5);
+  justify-content: center;
+  float: left;
+}
+
+.right {
+  display: flex;
+  width: 220px;
+  height: 80px;
+  background-color: rgba(225, 55, 220, 0.5);
+  justify-content: center;
+  float: right;
+}
+
+.what {
+  text-align: justify;
+  text-indent: 2em;
+}
+
+.rainbow-text {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #ff0000, #ff9900, #ffff00, #00ff00, #00ffff, #0000ff, #9900ff, #ff00ff);
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbow 5s linear infinite, blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.rainbow-text1{
+  background: linear-gradient(90deg, #ff0000, #ff9900, #ffff00, #00ff00, #00ffff, #0000ff, #9900ff, #ff00ff);
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbow 4s linear infinite, blink 2s ease-in-out infinite;
+}
+
+.font{
+  font-size: 30px;
+  font-weight: 700;
+  color: rgb(93, 0, 0);
+}
+
+.font1{
+  font-size: 25px;
+  font-weight: 600;
+  color: rgb(158, 0, 0);
+}

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML表格边框样式指南</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h2 {
+            color: #3498db;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        table {
+            width: 100%;
+            margin: 15px 0;
+        }
+        .demo-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .code-box {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 0.9rem;
+        }
+        .tool-container {
+            grid-column: 1 / -1;
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .tool-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            min-width: 150px;
+        }
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+        input, select, button {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        input[type="color"] {
+            height: 40px;
+            padding: 2px;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+            padding: 10px 20px;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        .output-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            min-height: 200px;
+            border: 1px dashed #ccc;
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+        .note {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            border-left: 4px solid #3498db;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #7f8c8d;
+        }
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* 表格样式示例 */
+        .basic-table {
+            border: 1px solid #ccc;
+        }
+        .basic-table th, .basic-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+        
+        .collapsed-table {
+            border-collapse: collapse;
+        }
+        .collapsed-table th, .collapsed-table td {
+            border: 1px solid #777;
+            padding: 8px;
+        }
+        
+        .styled-table {
+            border: 2px solid #3498db;
+            border-collapse: collapse;
+        }
+        .styled-table th {
+            background-color: #3498db;
+            color: white;
+            border: 1px solid #2980b9;
+            padding: 10px;
+        }
+        .styled-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        
+        .rounded-table {
+            border: 2px solid #e74c3c;
+            border-collapse: separate;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .rounded-table th {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px;
+        }
+        .rounded-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        
+        .minimal-table {
+            border: none;
+            border-collapse: collapse;
+        }
+        .minimal-table th {
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #3498db;
+            padding: 10px;
+        }
+        .minimal-table td {
+            border-bottom: 1px solid #eee;
+            padding: 8px;
+        }
+        
+        .shadow-table {
+            border: none;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .shadow-table th {
+            background-color: #2c3e50;
+            color: white;
+            padding: 12px;
+        }
+        .shadow-table td {
+            border-bottom: 1px solid #eee;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HTML表格边框样式指南</h1>
+            <p class="subtitle">学习如何为表格添加美观的边框效果</p>
+        </header>
+        
+        <div class="content">
+            <div class="card">
+                <h2>1. 基本表格边框</h2>
+                <p>使用 <code>border</code> 属性为表格和单元格添加边框。</p>
+                <div class="demo-box">
+                    <table class="basic-table">
+                        <tr>
+                            <th>姓名</th>
+                            <th>年龄</th>
+                            <th>城市</th>
+                        </tr>
+                        <tr>
+                            <td>张三</td>
+                            <td>28</td>
+                            <td>北京</td>
+                        </tr>
+                        <tr>
+                            <td>李四</td>
+                            <td>32</td>
+                            <td>上海</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="code-box">
+.basic-table {
+    border: 1px solid #ccc;
+}
+.basic-table th, .basic-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>2. 合并边框</h2>
+                <p>使用 <code>border-collapse: collapse;</code> 合并相邻边框。</p>
+                <div class="demo-box">
+                    <table class="collapsed-table">
+                        <tr>
+                            <th>产品</th>
+                            <th>价格</th>
+                            <th>库存</th>
+                        </tr>
+                        <tr>
+                            <td>笔记本电脑</td>
+                            <td>¥5,999</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>智能手机</td>
+                            <td>¥3,299</td>
+                            <td>50</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="code-box">
+.collapsed-table {
+    border-collapse: collapse;
+}
+.collapsed-table th, .collapsed-table td {
+    border: 1px solid #777;
+    padding: 8px;
+}
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>3. 样式化表格</h2>
+                <p>为表头添加不同颜色，使表格更具视觉吸引力。</p>
+                <div class="demo-box">
+                    <table class="styled-table">
+                        <tr>
+                            <th>部门</th>
+                            <th>负责人</th>
+                            <th>预算</th>
+                        </tr>
+                        <tr>
+                            <td>技术部</td>
+                            <td>王经理</td>
+                            <td>¥500,000</td>
+                        </tr>
+                        <tr>
+                            <td>市场部</td>
+                            <td>李总监</td>
+                            <td>¥300,000</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="code-box">
+.styled-table {
+    border: 2px solid #3498db;
+    border-collapse: collapse;
+}
+.styled-table th {
+    background-color: #3498db;
+    color: white;
+    border: 1px solid #2980b9;
+    padding: 10px;
+}
+.styled-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>4. 圆角表格</h2>
+                <p>使用 <code>border-radius</code> 和 <code>overflow: hidden</code> 创建圆角表格。</p>
+                <div class="demo-box">
+                    <table class="rounded-table">
+                        <tr>
+                            <th>课程</th>
+                            <th>教师</th>
+                            <th>时长</th>
+                        </tr>
+                        <tr>
+                            <td>网页设计</td>
+                            <td>张老师</td>
+                            <td>36小时</td>
+                        </tr>
+                        <tr>
+                            <td>JavaScript</td>
+                            <td>李老师</td>
+                            <td>48小时</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="code-box">
+.rounded-table {
+    border: 2px solid #e74c3c;
+    border-collapse: separate;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.rounded-table th {
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px;
+}
+.rounded-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>5. 简约风格</h2>
+                <p>只添加底部边框，创建简约的表格样式。</p>
+                <div class="demo-box">
+                    <table class="minimal-table">
+                        <tr>
+                            <th>任务</th>
+                            <th>负责人</th>
+                            <th>截止日期</th>
+                        </tr>
+                        <tr>
+                            <td>需求分析</td>
+                            <td>小王</td>
+                            <td>2023-06-15</td>
+                        </tr>
+                        <tr>
+                            <td>UI设计</td>
+                            <td>小张</td>
+                            <td>2023-06-20</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="code-box">
+.minimal-table {
+    border: none;
+    border-collapse: collapse;
+}
+.minimal-table th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #3498db;
+    padding: 10px;
+}
+.minimal-table td {
+    border-bottom: 1px solid #eee;
+    padding: 8px;
+}
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>6. 阴影效果</h2>
+                <p>添加阴影效果，使表格在页面上更加突出。</p>
+                <div class="demo-box">
+                    <table class="shadow-table">
+                        <tr>
+                            <th>项目</th>
+                            <th>进度</th>
+                            <th>状态</th>
+                        </tr>
+                        <tr>
+                            <td>网站重构</td>
+                            <td>75%</td>
+                            <td>进行中</td>
+                        </tr>
+                        <tr>
+                            <td>移动端适配</td>
+                            <td>30%</td>
+                            <td>未开始</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="code-box">
+.shadow-table {
+    border: none;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.shadow-table th {
+    background-color: #2c3e50;
+    color: white;
+    padding: 12px;
+}
+.shadow-table td {
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+}
+                </div>
+            </div>
+            
+            <div class="tool-container">
+                <h2>表格边框编辑器</h2>
+                <p>自定义表格边框样式，实时查看效果并获取代码。</p>
+                
+                <div class="tool-row">
+                    <div class="control-group">
+                        <label for="borderWidth">边框宽度</label>
+                        <input type="range" id="borderWidth" min="0" max="10" value="1">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="borderStyle">边框样式</label>
+                        <select id="borderStyle">
+                            <option value="solid">实线</option>
+                            <option value="dashed">虚线</option>
+                            <option value="dotted">点线</option>
+                            <option value="double">双线</option>
+                            <option value="groove">凹槽</option>
+                            <option value="ridge">凸起</option>
+                            <option value="inset">内凹</option>
+                            <option value="outset">外凸</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="borderColor">边框颜色</label>
+                        <input type="color" id="borderColor" value="#3498db">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="borderCollapse">边框合并</label>
+                        <select id="borderCollapse">
+                            <option value="collapse">合并</option>
+                            <option value="separate">分离</option>
+                        </select>
+                    </div>
+                    
+                    <button id="applyBtn">应用样式</button>
+                </div>
+                
+                <div class="output-box" id="outputBox">
+                    <table id="customTable">
+                        <tr>
+                            <th>姓名</th>
+                            <th>职业</th>
+                            <th>城市</th>
+                        </tr>
+                        <tr>
+                            <td>张三</td>
+                            <td>设计师</td>
+                            <td>北京</td>
+                        </tr>
+                        <tr>
+                            <td>李四</td>
+                            <td>开发者</td>
+                            <td>上海</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="code-box" id="codeOutput">
+                    生成的CSS代码将显示在这里...
+                </div>
+                
+                <div class="note">
+                    <strong>提示：</strong> 
+                    <ul>
+                        <li>使用 <code>border-collapse: collapse;</code> 可以合并相邻单元格的边框</li>
+                        <li>表格边框和单元格边框需要分别设置</li>
+                        <li>通过设置不同的边框样式和颜色可以创建各种视觉效果</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 HTML表格边框样式指南 | 设计用于教学目的</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const borderWidth = document.getElementById('borderWidth');
+            const borderStyle = document.getElementById('borderStyle');
+            const borderColor = document.getElementById('borderColor');
+            const borderCollapse = document.getElementById('borderCollapse');
+            const applyBtn = document.getElementById('applyBtn');
+            const customTable = document.getElementById('customTable');
+            const codeOutput = document.getElementById('codeOutput');
+            
+            // 更新边框宽度显示
+            const widthValue = document.createElement('span');
+            widthValue.textContent = '1px';
+            borderWidth.parentNode.appendChild(widthValue);
+            
+            borderWidth.addEventListener('input', function() {
+                widthValue.textContent = this.value + 'px';
+            });
+            
+            // 应用样式
+            applyBtn.addEventListener('click', function() {
+                const width = borderWidth.value + 'px';
+                const style = borderStyle.value;
+                const color = borderColor.value;
+                const collapse = borderCollapse.value;
+                
+                // 应用样式到表格
+                customTable.style.border = `${width} ${style} ${color}`;
+                customTable.style.borderCollapse = collapse;
+                
+                // 为所有单元格应用样式
+                const cells = customTable.querySelectorAll('th, td');
+                cells.forEach(cell => {
+                    cell.style.border = `${width} ${style} ${color}`;
+                    cell.style.padding = '8px';
+                });
+                
+                // 生成CSS代码
+                const cssCode = `#custom-table {\n  border: ${width} ${style} ${color};\n  border-collapse: ${collapse};\n}\n\n#custom-table th, #custom-table td {\n  border: ${width} ${style} ${color};\n  padding: 8px;\n}`;
+                
+                codeOutput.textContent = cssCode;
+            });
+            
+            // 初始应用一次样式
+            applyBtn.click();
+        });
+    </script>
+</body>
+</html>

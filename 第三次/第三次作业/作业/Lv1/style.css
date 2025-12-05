@@ -1,0 +1,53 @@
+html,body{
+  height: 100%;
+}
+
+.box {
+  width: 500px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.box div {
+  width: 180px;
+  height: 50px;
+  background-color: grey;
+}
+
+a[title="underline"] {
+  text-decoration: none;
+}
+
+.box > p {
+  color: red;
+}
+
+@keyframes change {
+  from {
+
+  }
+  to {
+    background-color: yellow;
+    font-size: 75%;
+  }
+}
+
+.box div:hover {
+  /* color: red; */
+  /* transform: ; */
+  /* transition-timing-function: ease; */
+  /* transition-duration: 2000ms; */
+  animation: change 1s ease-in-out forwards;
+}
+
+ul li:nth-child(1) {
+  font-size: 20px;
+}
+
+ul li:nth-child(2) {
+  font-size: 30px;
+}
+
+ul li:nth-child(3) {
+  font-size: 40px;
+}
