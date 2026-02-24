@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="3 2 18 18" fill="white">
+  <defs>
+    <mask id="door-cutout">
+      <rect x="0" y="0" width="24" height="24" fill="white"/>
+      <rect x="11.5" y="10.5" width="1" height="5.5" fill="black" rx="0.5"/>
+    </mask>
+  </defs>
+  <path d="M12 2Q14 2 15.5 3.2L20.5 7.5Q22 8.7 21 10.5L18.5 19Q18.2 20 17 20H7Q5.8 20 5.5 19L3 10.5Q2 8.7 3.5 7.5L8.5 3.2Q10 2 12 2Z" mask="url(#door-cutout)"/>
+</svg>

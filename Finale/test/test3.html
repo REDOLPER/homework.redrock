@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { margin: 0; }
+    .container {
+      display: flex;
+      width: 100%;
+      height: 200px; /* 仅用于显示 */
+    }
+    .left, .right {
+      width: 200px;
+      flex-shrink: 0;
+      background: #f0f0f0;
+    }
+    .middle {
+      flex: 1;
+      min-width: 300px;
+      background: #d0d0d0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left">Left</div>
+    <div class="middle">Middle</div>
+    <div class="right">Right</div>
+  </div>
+</body>
+</html>

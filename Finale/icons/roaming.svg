@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 30 30">
+  <defs>
+    <mask id="radio-cutout">
+      <rect x="0" y="0" width="30" height="30" fill="white"/>
+      <circle cx="10.5" cy="17.5" r="4.25" fill="none" stroke="black" stroke-width="2"/>
+      <circle cx="19.5" cy="17.5" r="4.25" fill="none" stroke="black" stroke-width="2"/>
+    </mask>
+  </defs>
+  
+  <g mask="url(#radio-cutout)">
+    <rect x="0" y="5" width="30" height="25" rx="4.5" fill="#797F8C"/>
+    <line x1="2.25" y1="6.7" x2="18" y2="1" stroke="#797F8C" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>

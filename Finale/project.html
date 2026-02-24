@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="project.css">
+</head>
+<body>
+  <div class="container">
+    <!-- 侧边栏 -->
+    <aside class="sideBar">
+      <div class="logoBox">
+        <img src="/resource/logo.png" alt="" class="logo">
+      </div>
+      <div class="sideContent1">
+        <div id="aside1">
+          <object data="/icons/recommended.svg" type="image/svg+xml"></object>
+          <span>推荐</span>
+        </div>
+        <div id="aside2">
+          <object data="/icons/selected.svg" type="image/svg+xml"></object>
+          <span>精选</span>
+        </div>
+        <div id="aside3">
+          <object data="/icons/podcast.svg" type="image/svg+xml"></object>
+          <span>播客</span>
+        </div>
+        <div id="aside4">
+          <object data="/icons/roaming.svg" type="image/svg+xml"></object>
+          <span>漫游</span>
+        </div>
+        <div id="aside5">
+          <object data="/icons/subscribed.svg" type="image/svg+xml"></object>
+          <span>关注</span>
+        </div>
+      </div>
+      <div class="side-hr1">
+        <hr size="1" width="72%" color="#E4E8EC" class="hr1">
+      </div>
+      <div class="side-mid">
+        <span class="mid-span">我的</span>
+        <object data="/icons/edit.svg" type="image/svg+xml" class="mid-edit"></object>
+        <div class="sideContent2">
+          <div id="aside6">
+            <object data="/icons/my-favorite.svg" type="image/svg+xml"></object>
+            <span>我喜欢的音乐</span>
+          </div>
+          <div id="aside7">
+            <object data="/icons/recently.svg" type="image/svg+xml"></object>
+            <span>最近播放</span>
+          </div>
+          <div id="aside8">
+            <object data="/icons/my-podcast.svg" type="image/svg+xml"></object>
+            <span>我的播客</span>
+          </div>
+
+          <div id="aside9">
+            <object data="/icons/my-collection.svg" type="image/svg+xml"></object>
+            <span>我的收藏</span>
+          </div>
+          <div id="aside10">
+            <object data="/icons/download-management.svg" type="image/svg+xml"></object>
+            <span>下载管理</span>
+          </div>
+          <div id="aside11">
+            <object data="/icons/local-music.svg" type="image/svg+xml"></object>
+            <span>本地音乐</span>
+          </div>
+          <div id="aside12">
+            <object data="/icons/my-music-cloud-drive.svg" type="image/svg+xml"></object>
+            <span>我的音乐网盘</span>
+          </div>
+
+        </div>
+        <div class="side-more" id="side-more">
+          <object data="/icons/more_down-arrow.svg" type="image/svg+xml" class="more-downarrow" id="more-obj"></object>
+          <span class="more-font" id="more-font">更多</span>
+        </div>
+      </div>
+      <div class="side-hr2">
+        <hr size="1" width="72%" color="#E4E8EC" class="hr2">
+      </div>
+      <div class="playlist">
+        <div class="my-playlist">
+          <span class="playlist-span1">创建的歌单</span>
+          <span class="playlist-span2">0</span>
+          <object data="/icons/playlist_down-arrow.svg" type="image/svg+xml" class="playlist-downarrow"></object>
+        </div>
+      </div>
+      <div class="side-hr3">
+        <hr size="1" width="72%" color="#E4E8EC" class="hr3">
+      </div>
+    </aside>
+
+    <!-- 主要内容 -->
+    <main class="mainContent">
+      <div class="main-top">
+        <div class="top-back">
+          <object data="/icons/left-arrow.svg" type="image/svg+xml"></object>
+        </div>
+        <div class="search-bar">
+          <div class="search-bar-inside">
+
+          </div>
+        </div>
+        <div class="sound-hound">
+          <div class="sound-hound-inside">
+
+          </div>
+        </div>
+        <div class="top-middle"></div>
+        <div class="nickname">
+          <div class="avatar-box"></div>
+          <div class="avatar">
+            <object data="/icons/default-avatar.svg" type="image/svg+xml" id="default-avatar"></object>
+            <img src="" alt="" class="avatar-img">
+          </div>
+          <div class="my-name">未登录</div>
+        </div>
+        <div class="top-more">
+          <object data="/icons/more_down-arrow-top.svg" type="image/svg+xml" class="more-down-arrow-top"></object>
+        </div>
+        <div class="four-functions">
+
+        </div>
+        <div class="top-hr">
+          <div class="as-hr"></div>
+        </div>
+        <div class="mini-mode">
+
+        </div>
+        <div class="minimized">
+
+        </div>
+        <div class="maximized">
+
+        </div>
+        <div class="close">
+
+        </div>
+        <div class="for-nothing"></div>
+      </div>
+
+      <!-- 每日推荐... -->
+      <div class="recommended-carousel-img">
+        <div class="recommended-carousel-img-left">
+
+        </div>
+        <div class="recommended-carousel-img-box">
+          <div></div>
+          <div></div>
+        </div>
+        <div class="recommended-carousel-img-right">
+
+        </div>
+      </div>
+
+      <!-- 推荐歌单 -->
+      <div class="recommended-playlist-top">
+        <div class="recommended-playlist-top-left">
+          <span class="recommended-playlist-top-span">推荐歌单</span>
+
+        </div>
+
+      </div>
+      <div class="recommended-playlist">
+        <div class="recommended-playlist-left">
+
+        </div>
+        <div class="recommended-playlist-box">
+
+        </div>
+        <div class="recommended-playlist-right">
+
+        </div>
+      </div>
+
+      <!-- 精选活动 -->
+      <div class="selected-activities-top">
+        <span class="selected-activities-top-span">精选活动</span>
+      </div>
+      <div class="selected-activities">
+        <div class="selected-activities-left">
+
+        </div>
+        <div class="selected-activities-box">
+          <div class="selected-activities-track">
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+        <div class="selected-activities-right">
+
+        </div>
+      </div>
+
+
+      <!-- 我喜欢的音乐 -->
+      <div class="my-favorite-music-main-content">
+        <div class="my-favorite-music-top">
+          <div class="my-favorite-music-img">
+
+          </div>
+          <div class="my-favorite-music-top-last-content">
+            <span class="my-favorite-music-span">我喜欢的音乐</span>
+            <div class="my-favorite-music-avatar-nickname">
+              <div class="my-favorite-music-avatar">
+
+              </div>
+              <span class="my-favorite-music-nickname">AAA</span>
+            </div>
+            <div class="my-favorite-music-function">
+              <div class="my-favorite-music-play-all">
+                <object data="/icons/play-all.svg" type="image/svg+xml"></object>
+                <span>播放全部</span>
+              </div>
+              <div class="my-favorite-music-download">
+
+                <span>下载</span>
+              </div>
+              <div class="my-favorite-music-more-functions">
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="my-favorite-music-options">
+          <div class="my-favorite-music-options-songs">
+            <span class="my-favorite-music-options-songs-span">歌曲</span>
+            <div class="my-favorite-music-options-red-line1"></div>
+          </div>
+          <div class="my-favorite-music-options-songs-num">0</div>
+          <div class="my-favorite-music-options-comments">
+            <span class="my-favorite-music-options-comments-span">评论</span>
+            <div class="my-favorite-music-options-red-line2"></div>
+          </div>
+          <div class="my-favorite-music-options-collectors">
+            <span class="my-favorite-music-options-collectors-span">收藏者</span>
+            <div class="my-favorite-music-options-red-line3"></div>
+          </div>
+        </div>
+
+        <div class="my-favorite-music-real-content">
+          <div id="my-favorite-music-real-content-row0">
+            <span>#</span>
+            <span>标题</span>
+            <span>专辑</span>
+            <span>喜欢</span>
+            <span>时长</span>
+          </div>
+          <div id="my-favorite-music-real-content-rown">
+            <span class="my-favorite-music-real-content-num">01</span>
+            <div class="my-favorite-music-real-content-img">
+              <img src="" alt="">
+            </div>
+            <div class="my-favorite-music-real-content-artist-title">
+              <span>AAA</span>
+              <span>A1</span>
+            </div>
+            <span class="my-favorite-music-real-content-album">无</span>
+            <div class="my-favorite-music-real-content-obj">
+              <object data="/icons/my-favorite-true.svg" type="image/svg+xml"></object>
+            </div>
+            <span class="my-favorite-music-real-content-duration">1:01</span>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- 登录窗口 -->
+    <div class="login">
+      <div class="close-box"></div>
+      <div class="login-close">
+        <object data="/icons/close-login.svg" type="image/svg+xml" id="close-login"></object>
+      </div>
+
+      <!-- 扫码登录 -->
+      <div class="scan-code">
+        <span class="scan-code-span1">扫码登录</span>
+        <div class="QR-code">
+          <img src="" alt="扫码登录" id="QRimg" class="QRimg">
+
+          <div class="refresh-QRcode">
+            <span>二维码已失效</span>
+            <div class="re-obtain-QRcode">点击重试</div>
+          </div>
+        </div>
+        <div class="scan-code-span2">
+          <span>使用</span>
+          <span class="eight-emphasis">网易云音乐APP</span>
+          <span>扫码登录</span>
+        </div>
+        <div class="other-login-methods">
+          <span>选择其它登录模式</span>
+          <object data="/icons/right-arrow.svg" type="image/svg+xml"></object>
+        </div>
+
+        <div class="confirm-login">
+          <img src="/resource/confirm-login.png" alt="" class="confirm-login-png">
+          <span class="confirm-login-span">请在手机上确认登录</span>
+        </div>
+      </div>
+
+      <!-- 手机号登录 -->
+      <div class="phone-number">
+        <img src="/resource/scan-code.png" alt="" class="to-scan-QRcode">
+        <div class="close-box" id="phone-number-close"></div>
+        <object data="/icons/close-login.svg" type="image/svg+xml" class="phone-number-login-close"></object>
+        <img src="/resource/logo-login.png" alt="" class="logo-login">
+        <div class="please-enter">
+          <div class="enter-phone-number">
+            <span class="choose-countries">+86</span>
+            <object data="/icons/more_down-arrow-login.svg" type="image/svg+xml" class="choose-countries-obj"></object>
+            <div class="hr-phone-number"></div>
+            <input type="text" placeholder="请输入手机号" required class="please-enter-your-phone-number">
+            <object data="/icons/clear.svg" type="image/svg+xml" class="clear-phone-number-obj"></object>
+            <div class="clear-phone-number-box"></div>
+          </div>
+          
+          <!-- 验证码 -->
+          <div class="enter-verification-code">
+            <input type="text" placeholder="请输入验证码" required class="please-enter-verification-code">
+            <object data="/icons/clear.svg" type="image/svg+xml" class="clear-verification-code-obj"></object>
+            <div class="clear-verification-code-box"></div>
+            <div class="hr-verification-code"></div>
+            <span class="countdown-recend">60</span>
+
+            <span class="recend-verification-code">重新获取</span>
+          </div>
+        </div>
+
+        <div class="automaticLogin-password">
+          <label class="automatic-login-label">
+            <input type="checkbox" class="automatic-login-hidden">
+            <span class="automatic-login-custom"></span>
+            自动登录
+          </label>
+
+          <div class="enter-valid-number">请输入11位数字的手机号</div>
+
+          <div class="have-sended-verification-code">验证码已通过短信发送</div>
+          
+          <span class="password-login-enter">密码登录</span>
+        </div>
+
+        <div class="confirm-verification-code">
+          <!-- 发送验证码前 -->
+          验证码登录
+        </div>
+
+        <div class="verify-verification-code">登录</div>
+
+        <div class="other-four-login-methods">
+
+        </div>
+
+        <div class="agree-all">
+          <label class="accepted-label">
+            <input type="checkbox" class="accepted-hidden">
+            <span class="accepted-custom"></span>
+          </label>
+          <span class="agree-span1">同意</span>
+          <span class="agree-span2">《服务条款》 《隐私政策》 《儿童隐私政策》</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 播放 -->
+    <div class="play">
+      <div class="play-img-border">
+        <div class="play-img">
+
+        </div>
+      </div>
+      <div class="play-artist-title">
+        <span>111</span>
+        <span>222</span>
+      </div>
+      <div class="play-heart">
+        <object data="/icons/my-favorite.svg" type="image/svg+xml"></object>
+      </div>
+      <div class="play-comment">
+
+      </div>
+      <div class="previous-song">
+        <object data="/icons/previous-song.svg" type="image/svg+xml"></object>
+      </div>
+      <div class="play-button">
+        <object data="/icons/play.svg" type="image/svg+xml"></object>
+
+        <div class="play-button-box"></div>
+      </div>
+      <div class="next-song">
+        <object data="/icons/next-song.svg" type="image/svg+xml"></object>
+      </div>
+    </div>
+  </div>
+
+  <script src="/project.js"></script>
+</body>
+</html>

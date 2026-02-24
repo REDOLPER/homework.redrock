@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <mask id="clear-mask">
+      <circle cx="8" cy="8" r="8" fill="white"/>
+      <g transform="translate(8, 8)" stroke="black" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="-2.46" y1="-2.46" x2="2.46" y2="2.46"/>
+        <line x1="2.46" y1="-2.46" x2="-2.46" y2="2.46"/>
+      </g>
+    </mask>
+  </defs>
+  <circle cx="8" cy="8" r="8" fill="#A6A9B1" mask="url(#clear-mask)"/>
+</svg>

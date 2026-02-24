@@ -1,0 +1,9 @@
+二维码登录 658
+手机号登录 783
+验证码登录变量 507
+加载二维码 402
+手机号登录界面 447
+const phoneNumberInput = enterPhoneNumberInput.value.trim();
+//验证码登录按钮变量
+const confirmVerificationCode = document.querySelector('.confirm-verification-code');
+发送验证码 521

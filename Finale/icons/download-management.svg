@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="-0.5 -0.5 21 21">
+  <defs>
+    <mask id="folder-cutout">
+      <rect x="0" y="0" width="24" height="24" fill="white"/>
+      <g transform="translate(4.25, 6) scale(0.5)" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5 L12 19"/>
+        <path d="M18 13 L12 19"/>
+        <path d="M6 13 L12 19"/>
+      </g>
+    </mask>
+  </defs>
+  
+  <g mask="url(#folder-cutout)">
+    <path d="M2 4 Q0 4 0 6 L2 19 Q2 20 4 20 L16 20 Q18 20 18 19 L20 6 Q20 4 18 4 Z" fill="#797F8C"/>
+    <rect x="2" y="0" width="16" height="2" rx="1" fill="#797F8C"/>
+  </g>
+  </svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="1.5 0 20 20" fill="rgba(121,127,140,1)">
+  <defs>
+    <mask id="note-cutout">
+      <rect x="1.5" y="0" width="20" height="20" fill="white"/>
+      <path d="M11 11.5L19.5 8.5V14.5C19.3 14.3 19 14.2 18.7 14.2C17.5 14.2 16.7 15 16.7 16.5C16.7 18 17.5 18.8 18.7 18.8C20 18.8 20.8 18 20.8 16.5V7C20.8 5.5 20 4.8 18.5 5.2C17 5.6 15.2 6.5 13.5 7.2L11.5 8C10.7 8.4 10.3 8.8 10.3 9.5V18C10 17.8 9.7 17.7 9.4 17.7C8.2 17.7 7.4 18.5 7.4 20C7.4 21.5 8.2 22.3 9.4 22.3C10.6 22.3 11.4 21.5 11.4 20V11.5H11Z" fill="black" transform="translate(2, 3) scale(0.65)"/>
+    </mask>
+  </defs>
+  
+  <g mask="url(#note-cutout)">
+    <path d="M3.5 4 Q1.5 4 1.5 6 L3.5 19 Q3.5 20 5.5 20 L17.5 20 Q19.5 20 19.5 19 L21.5 6 Q21.5 4 19.5 4 Z" fill="#797F8C"/>
+    <rect x="3.5" y="0" width="16" height="2" rx="1" fill="#797F8C"/>
+  </g>
+</svg>

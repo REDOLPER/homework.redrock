@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="1 1 23.5 23.5">
+  <g fill="none" stroke="#797F8C" stroke-width="2" stroke-linecap="round">
+    <path d="M23 12.5 A10.5 10.5 0 1 0 2 12.5 A10.5 10.5 0 1 0 23 12.5" 
+          stroke-dasharray="54.977 10.996"
+          stroke-dashoffset="16.493"/>
+    <path d="M18.5 12.5 A6 6 0 1 0 6.5 12.5 A6 6 0 1 0 18.5 12.5" 
+          stroke-dasharray="31.416 6.283"
+          stroke-dashoffset="9.424"/>
+  </g>
+  
+  <g transform="translate(0.5, 8) scale(0.75)" fill="#797F8C">
+    <path d="M18 9 L14 10.5 V17.5 A4 4 0 1 1 12 13.5 V7 A2.5 2.5 0 0 1 14 4.5 L18 3.3 Q19.5 2.8 20.5 3.5 L14.3 10.41 Z"/>
+  </g>
+</svg>
