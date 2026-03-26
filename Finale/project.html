@@ -142,14 +142,41 @@
         <div class="for-nothing"></div>
       </div>
 
+      <!-- 推荐 -->
+      <div class="recommended-interface">
       <!-- 每日推荐... -->
       <div class="recommended-carousel-img">
         <div class="recommended-carousel-img-left">
 
         </div>
         <div class="recommended-carousel-img-box">
-          <div></div>
-          <div></div>
+          <div>
+            <img src="" alt="">
+          </div>
+          <div>
+            <img src="" alt="">
+          </div>
+          <div>
+            <img src="" alt="">
+          </div>
+          <div>
+            <img src="" alt="">
+          </div>
+          <div>
+            <img src="" alt="">
+          </div>
+          <div>
+            <img src="" alt="">
+          </div>
+          <div>
+            <img src="" alt="">
+          </div>
+          <div>
+            <img src="" alt="">
+          </div>
+          <div>
+            <img src="" alt="">
+          </div>
         </div>
         <div class="recommended-carousel-img-right">
 
@@ -186,13 +213,30 @@
         </div>
         <div class="selected-activities-box">
           <div class="selected-activities-track">
-            <div></div>
-            <div></div>
+            <div>
+              <img src="" alt="">
+            </div>
+            <div>
+              <img src="" alt="">
+            </div>
+            <div>
+              <img src="" alt="">
+            </div>
+            <div>
+              <img src="" alt="">
+            </div>
+            <div>
+              <img src="" alt="">
+            </div>
+            <div>
+              <img src="" alt="">
+            </div>
           </div>
         </div>
         <div class="selected-activities-right">
 
         </div>
+      </div>
       </div>
 
 
@@ -253,7 +297,7 @@
           <div id="my-favorite-music-real-content-rown">
             <span class="my-favorite-music-real-content-num">01</span>
             <div class="my-favorite-music-real-content-img">
-              <img src="" alt="">
+              <img src="" alt="" class="favorite-img">
             </div>
             <div class="my-favorite-music-real-content-artist-title">
               <span>AAA</span>
@@ -370,14 +414,15 @@
 
     <!-- 播放 -->
     <div class="play">
+      <audio src="" id="songAudio"></audio>
       <div class="play-img-border">
         <div class="play-img">
-
+          <img src="" alt="" id="play-img">
         </div>
       </div>
       <div class="play-artist-title">
-        <span>111</span>
-        <span>222</span>
+        <span id="play-title">111</span>
+        <span id="play-artist">222</span>
       </div>
       <div class="play-heart">
         <object data="/icons/my-favorite.svg" type="image/svg+xml"></object>
@@ -389,7 +434,8 @@
         <object data="/icons/previous-song.svg" type="image/svg+xml"></object>
       </div>
       <div class="play-button">
-        <object data="/icons/play.svg" type="image/svg+xml"></object>
+        <object data="/icons/play.svg" type="image/svg+xml" id="pauseButton"></object>
+        <object data="/icons/pause.svg" type="image/svg+xml" id="playButton"></object>
 
         <div class="play-button-box"></div>
       </div>

@@ -652,6 +652,7 @@ document.querySelector('.verify-verification-code').addEventListener('click', as
     loginInterface = false;
     updateUserInformation();
     updatePlaylistCount();
+    updateLikelist();
 
   } else {
     console.log('验证码错误');
@@ -760,6 +761,7 @@ function startPolling(key) {
           updatePlaylistCount();
 
           // 加载登录后需要的数据（如每日推荐、歌单等）
+          updateLikelist();
           
           break;
         case 800: //二维码过期
@@ -945,7 +947,42 @@ async function verifyVerificationCode(phoneNumber, verificationCode) {
 //
 
 
-//
+//更换界面效果
+let preInterface = null;
+let nextInterface = document.querySelector('.recommended-interface');
+
+// function mapInterface(i) {
+//   if (i === 1) {
+//     return document.querySelector('.recommended-interface');
+//   } else if (i === 2) {
+
+//   } else if (i === 3) {
+    
+//   } else if (i === 4) {
+    
+//   } else if (i === 5) {
+    
+//   } else if (i === 6) {
+//     return document.querySelector('.my-favorite-music-main-content');
+//   } else if (i === 7) {
+    
+//   } else if (i === 8) {
+    
+//   } else if (i === 9) {
+    
+//   } else if (i === 10) {
+    
+//   } else if (i === 11) {
+    
+//   } else if (i === 12) {
+    
+//   }
+// }
+
+function changeInterface(lastPage, nextPage) {
+  
+}
+
 document.getElementById('aside1').addEventListener('click', () => {
   document.querySelector('.recommended-carousel-img').style.display = 'flex';
   document.querySelector('.recommended-playlist-top').style.display = 'flex';
@@ -965,3 +1002,285 @@ document.getElementById('aside6').addEventListener('click', () => {
 
   document.querySelector('.my-favorite-music-main-content').style.display = 'flex';
 })
+
+
+
+//获取 我喜欢的音乐
+async function getLikelist(uid) {
+  try {
+    const response = await fetch(`${baseURL}/likelist?uid=${uid}`);
+    const data = await response.json();
+
+    if (data.code === 200) {
+      console.log('获取 我喜欢的音乐 成功');
+      
+      const likelistArray = data.ids;
+      return likelistArray;
+    }
+  } catch (err) {
+    console.error('获取 我喜欢的音乐 失败', err);
+    return null;
+  }
+}
+
+//更新 我喜欢的音乐 界面
+document.getElementById('my-favorite-music-real-content-rown').style.display = 'none';
+
+async function updateLikelist() {
+  try {
+    const uidData = await checkLoginStatus();
+    const uid = uidData.id;
+
+    const likelist = await getLikelist(uid);
+
+    const mainContent = document.querySelector('.my-favorite-music-real-content');
+    const exampleDiv = document.getElementById('my-favorite-music-real-content-rown');
+    
+    let index = 0;
+    for (const i of likelist) {
+      const div = exampleDiv.cloneNode(true);
+      const newId = index + 1;
+
+      div.style.display = 'flex';
+      div.id = `my-favorite-music-real-content-row${newId}`;
+
+      //更改span
+      const span = div.querySelectorAll('span');
+
+      //序号
+      const num = String(index + 1).padStart(2, '0');
+      span[0].textContent = num;
+
+      //歌曲名
+      const songData = await getSongInformation(i);
+
+      const songName = songData.name;
+      span[1].textContent = songName;
+
+      //艺术家
+      const artist = songData.ar[0].name;
+      span[2].textContent = artist;
+
+      //专辑封面
+      const picture = songData.al.picUrl;
+      div.querySelector('.favorite-img').src = picture;
+
+      //专辑文字
+      const albumName = songData.al.name;
+      span[3].textContent = albumName;
+
+      //时长
+      const length = songData.dt;
+      const minutes = Math.floor(length / 60000);
+      const seconds = (Math.floor(length / 1000)) % 60;
+      const transformedS = String(seconds).padStart(2, '0');
+      span[4].textContent = `${minutes}:${transformedS}`;
+      
+      mainContent.appendChild(div);
+      index++;
+
+      //播放
+      div.addEventListener('click', async () => {
+        playSong(i);
+      })
+    }
+    //更新歌曲数
+    const songCounts = index;
+    document.querySelector('.my-favorite-music-options-songs-num').textContent = songCounts;
+  } catch (err) {
+    console.error('更新 我喜欢的音乐 失败', err);
+  }
+}
+
+//获取歌曲URL
+async function getSongURL(id) {
+  try {
+    const response = await fetch(`${baseURL}/song/url/v1?id=${id}&level=exhigh`);
+    const data = await response.json();
+
+    if (data.code === 200) {
+      console.log('获取音乐成功');
+
+      const songURL = data.data[0].url;
+      return songURL;
+    } else {
+      console.log('获取音乐失败', data.code);
+    }
+  } catch (err) {
+    console.error('获取音乐失败', err);
+  }
+}
+
+//获取歌曲信息
+async function getSongInformation(id) {
+  try {
+    const response = await fetch(`${baseURL}/song/detail?ids=${id}`);
+    const data = await response.json();
+
+    if (data.code === 200) {
+      const songData = data.songs[0];
+      
+      return songData;
+    } else {
+      console.log('获取歌曲信息失败', data.code);
+    }
+    
+  } catch (err) {
+    console.error('获取歌曲信息失败', err);
+  }
+}
+
+
+//播放歌曲
+const playBar = document.querySelector('.play');
+let isFirstPlay = true;
+let isPlaying = false;
+
+playBar.style.display = 'none';
+document.getElementById('playButton').style.display = 'none';
+
+//播放
+const audio = document.getElementById('songAudio');
+
+async function playSong(id) {
+  try {
+    if (isPlaying) {
+      audio.pause();
+      audio.src = '';
+    }
+
+    const songURL = await getSongURL(id);
+
+    console.log('歌曲URL:', songURL);
+
+    if (isFirstPlay) {
+      playBar.style.display = 'flex';
+      isFirstPlay = false;
+    }
+
+    isPlaying = true;
+    audio.src = songURL;
+    audio.play()
+      .catch(err => {console.error('播放失败', err)});
+    
+    document.getElementById('playButton').style.display = 'block';
+    document.getElementById('pauseButton').style.display = 'none';
+
+    //更改数据
+    const title = document.getElementById('play-title');
+    const artist = document.getElementById('play-artist');
+    const img = document.getElementById('play-img');
+
+    const songInformation = await getSongInformation(id);
+    const songName = songInformation.name;
+    const songArtist = songInformation.ar[0].name;
+    const songImg = songInformation.al.picUrl;
+
+    title.textContent = songName;
+    artist.textContent = songArtist;
+    img.src = songImg;
+  } catch (err) {
+    console.error('播放失败', err);
+  }
+}
+
+
+//播放按钮
+const playButton = document.querySelector('.play-button-box');
+
+playButton.addEventListener('mouseenter', () => {
+  document.querySelector('.play-button').style.filter = 'brightness(0.85)';
+})
+
+playButton.addEventListener('mouseleave', () => {
+  document.querySelector('.play-button').style.filter = 'brightness(1)';
+})
+
+playButton.addEventListener('click', () => {
+  if (isPlaying) {
+    document.getElementById('playButton').style.display = 'none';
+    document.getElementById('pauseButton').style.display = 'block';
+    audio.pause();
+    isPlaying = false;
+  } else {
+    document.getElementById('playButton').style.display = 'block';
+    document.getElementById('pauseButton').style.display = 'none';
+    audio.play();
+    isPlaying = true;
+  }
+})
+
+
+
+
+
+//轮播图
+async function bannerData() {
+  try {
+    const response = await fetch(`${baseURL}/banner`);
+    const data = await response.json();
+
+    if (data.code === 200) {
+      console.log('导入轮播图成功');
+      return data.banners;
+    } else {
+      console.log('导入轮播图出错', data.code);
+    }
+  } catch (err) {
+    console.error('导入轮播图出错', err);
+  }
+}
+
+async function updateBanner() {
+  try {
+    const bannerTrack = document.querySelector('.selected-activities-track');
+    const bannerArray = bannerTrack.querySelectorAll('img');
+    const bannerImgArray = await bannerData();
+
+    let i = 0;
+
+    bannerArray[i].src = bannerImgArray[i].bigImageUrl;
+    bannerArray[i + 1].src = bannerImgArray[i + 1].bigImageUrl;
+    bannerArray[i + 2].src = bannerImgArray[i + 2].bigImageUrl;
+    bannerArray[i + 3].src = bannerImgArray[i + 3].bigImageUrl;
+    bannerArray[i + 4].src = bannerImgArray[i + 4].bigImageUrl;
+    bannerArray[i + 5].src = bannerImgArray[i + 5].bigImageUrl;
+  } catch (err) {
+    console.error('更新轮播图出错', err);
+  }
+}
+
+updateBanner();
+
+//轮播效果
+async function switchImg() {
+  try {
+    const bannerTrack = document.querySelector('.selected-activities-track');
+    const bannerArray = bannerTrack.querySelectorAll('div');
+    const bannerImgArray = bannerTrack.querySelectorAll('img');
+    const bannerImgDataArray = await bannerData();
+    const bannerImgDataArrayNum = bannerImgDataArray.length;
+    let turns = 1;
+
+    const switchTimer = setInterval(() => {
+      bannerArray.forEach((i, index) => {
+        i.classList.add('moved');
+      })
+    }, 2000)
+
+    const removeTimer =  setInterval(() => {
+      bannerArray.forEach((i, index) => {
+        bannerImgArray.forEach((j, ind) => {
+          j.src = bannerImgDataArray[(ind + turns * 3) % bannerImgDataArrayNum].bigImageUrl;
+        });
+        i.classList.remove('moved');
+        // console.log(turns);
+      });
+      turns++;
+    }, 6000);
+  } catch (err) {
+    console.error('轮播出错', err);
+  }
+}
+
+switchImg();

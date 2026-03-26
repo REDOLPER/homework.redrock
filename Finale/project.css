@@ -582,6 +582,13 @@ html, body {
 
 
 
+
+.recommended-interface {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
 .recommended-carousel-img {
   display: flex;
   width: 100%;
@@ -600,18 +607,24 @@ html, body {
 .recommended-carousel-img-box {
   display: flex;
   align-items: center;
-  height: 100%;
+  /* height: 100%; */
   width: 100%;
+  height: 202.5px;
+  /* width: 1142.5px; */
   background-color: #ff7777;
-  flex-shrink: 1;
+  /* flex-shrink: 0; */
   gap: 16px;
+  overflow: hidden;
 }
 
 .recommended-carousel-img-box> div {
   height: 200px;
-  width: 150px;
+  width:150px;
   border-radius: 5px;
   background-color: #a77bff;
+  /* margin: 0 16px 0 0; */
+  flex-shrink: 0;
+  overflow: hidden;
 }
 
 
@@ -700,7 +713,8 @@ html, body {
   width: 100%;
   height: 206px;
   flex-shrink: 1;
-  background-color: #ffa556;
+  /* background-color: #ffa556; */
+  /* overflow: hidden; */
 }
 
 .selected-activities-left {
@@ -715,27 +729,57 @@ html, body {
   align-items: center;
   height: 100%;
   /* width: 100%; */
-  width: 1142.5px;
-  background-color: #ff7777;
+  width: 1157.5px;
+  /* background-color: #ff7777; */
   flex-shrink: 0;
   /* position: fixed; */
+  /* overflow: hidden; */
 }
 
 .selected-activities-track {
   display: flex;
-  width: 300%;
+  width: 100%;
+  /* width: 1157.5px; */
   height: 100%;
   background-color: #fff;
-  /* gap: 16px; */
+  gap: 16px;
   /* overflow-x: auto; */
+  overflow: hidden;
+
+}
+
+@keyframes switchImg {
+  from {
+
+  }
+  to {
+    transform: translate(-1174px, 0);
+  }
 }
 
 .selected-activities-track> div {
-  width: 12.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 12.5%; */
+  width: 375.167px;
   height: 100%;
   flex-shrink: 0;
   border-radius: 10px;
   background-color: #73fbc2;
+  /* animation: switchImg 2s ease-in-out 2s; */
+  /* transition: transform 2s ease-in-out; */
+}
+
+.selected-activities-track> div.moved {
+  /* transform: translate(-391.167px, 0); */
+  animation: switchImg 2s ease-in-out 2s;
+}
+
+.selected-activities-track img {
+  width: 375.167px;
+  height: 100%;
+  border-radius: 10px;
 }
 
 /* .selected-activities-box> div {
@@ -887,7 +931,7 @@ html, body {
   flex-direction: column;
   height: 100%;
   width: 33px;
-  background-color: #fff;
+  /* background-color: #fff; */
   margin: 0 0 0 40px;
 }
 
@@ -904,8 +948,9 @@ html, body {
 }
 
 .my-favorite-music-options-songs-num {
-  position: fixed;
-  margin: -5px 0 0 74px;
+  /* position: fixed; */
+  position: relative;
+  margin: -5px 0 0 0px;
   font-size: 14px;
   font-weight: 700;
 }
@@ -917,7 +962,7 @@ html, body {
   flex-direction: column;
   height: 100%;
   width: 33px;
-  background-color: #fff;
+  /* background-color: #fff; */
   margin: 0 0 0 35px;
 }
 
@@ -941,7 +986,7 @@ html, body {
   flex-direction: column;
   height: 100%;
   width: 50px;
-  background-color: #fff;
+  /* background-color: #fff; */
   margin: 0 0 0 30px;
 }
 
@@ -1013,46 +1058,82 @@ html, body {
   /* margin: 0 0 0 40px; */
 }
 
+.my-favorite-music-real-content> :not(:first-child):hover {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
 .my-favorite-music-real-content-num {
   margin: 0 0 0 20px;
 }
 
-.my-favorite-music-real-content-img {
+.favorite-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 27.5px;
   width: 27.5px;
   background-color: #71ff97;
   margin: 0 0 0 20px;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+
+.my-favorite-music-real-content-img> img {
+  height: 27.5px;
+  width: 27.5px;
   border-radius: 5px;
 }
 
 .my-favorite-music-real-content-artist-title {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 558px;
   margin: 0 0 0 10px;
 }
 
 .my-favorite-music-real-content-artist-title> span:nth-child(1) {
+  /* white-space: nowrap; */
+  /* position: fixed; */
   font-size: 16px;
 }
 
 .my-favorite-music-real-content-artist-title> span:nth-child(2) {
+  /* white-space: nowrap; */
   font-size: 13px;
   color: #555b6b;
 }
 
 .my-favorite-music-real-content-album {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 378px;
+  /* position: relative; */
   font-size: 13px;
   color: #495061;
-  margin: 0 0 0 528px;
+  /* margin: 0 0 0 528px; */
+  left: 896px;
 }
 
 .my-favorite-music-real-content-obj {
-  margin: 0 0 0 364px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 58px;
+  /* position: absolute; */
+  /* margin: 0 0 0 364px; */
+  /* left: 1274px; */
 }
 
 .my-favorite-music-real-content-duration {
-  margin: 0 0 0 44px;
+  /* position: absolute; */
+  /* margin: 0 0 0 44px; */
   color: #919395;
+  left: 1330px;
+  overflow: hidden;
 }
 
 
@@ -1624,21 +1705,31 @@ html, body {
 }
 
 .play-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 42px;
   width: 42px;
   background-color: #fff;
   border-radius: 100%;
 }
 
+#play-img {
+  height: 42px;
+  width: 42px;
+  border-radius: 100%;
+}
+
 .play-artist-title {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   flex-direction: column;
   margin: 0 0 0 10px;
 }
 
 .play-artist-title> :nth-child(2) {
   color: #7f8490;
+  font-size: 14px;
 }
 
 .play-heart {
@@ -1670,7 +1761,7 @@ html, body {
   justify-content: center;
   align-items: center;
   border-radius: 100%;
-  background-color: #d14552;
+  background-color: #f75259;
   height: 40px;
   width: 40px;
   position: absolute;
@@ -1685,6 +1776,7 @@ html, body {
   background-color: transparent;
   height: 40px;
   width: 40px;
+  cursor: pointer;
 }
 
 .next-song {
