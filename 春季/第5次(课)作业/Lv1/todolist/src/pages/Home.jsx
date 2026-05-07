@@ -1,0 +1,101 @@
+import '../App.css';
+import AddTaskModal from '../components/AddTaskModal';
+import TodoItem from '../components/TodoItem';
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  toggleTask,
+  deleteTask,
+} from '../store/todoSlice';
+import Fns from '../components/Fns';
+import ChangeTaskModal from '../components/ChangeTaskModal';
+import { changeTaskName } from '../store/todoSlice';
+import HelpBtn from '../components/HelpBtn';
+
+const today = new Date();
+
+function Home() {
+  const tasks = useSelector((state) => state.todo.tasks);
+  const dispatch = useDispatch();
+  const [isHidden, setIsHidden] = useState(true);
+
+  // 用于控制修改任务名称的模态框显示与隐藏
+  const [isChangeHidden, setIsChangeHidden] = useState(true);
+  const [currentTask, setCurrentTask] = useState(null);    // { id, name}
+
+  const completedCount = tasks.filter((task) => task.completed).length;
+  const totalCount = tasks.length;
+
+  const handleOpenModal = () => {
+    setIsHidden(false);
+  };
+
+  const handleCloseModal = () => {
+    setIsHidden(true);
+  };
+
+  // 修改任务相关（通过父组件调用）
+  const handleOpenChangeModal = (taskId, currentName) => {
+    setCurrentTask({ id: taskId, name: currentName });
+    setIsChangeHidden(false);
+  };
+
+  const handleCloseChangeModal = () => {
+    setIsChangeHidden(true);
+    setCurrentTask(null);
+  };
+
+  const handleConfirmChange = (newName) => {
+    if (currentTask) {
+      dispatch(changeTaskName({ id: currentTask.id, newName }));
+      handleCloseChangeModal();
+    }
+  };
+
+  // 删除任务（通过父组件调用）
+
+  return (
+    <>
+      <HelpBtn />
+      <div className="container">
+        <header>
+          <h1 id="date">{today.toLocaleDateString()}</h1>
+          <p>
+            <span id="task-counter" className="task-counter">
+              {completedCount}
+            </span>
+            /
+            <span id="task-counter" className="task-counter">
+              {totalCount}
+            </span> tasks
+          </p>
+        </header>
+        <Fns />
+        <ul className="task-list">
+          {tasks.map((item) => (
+            <TodoItem
+             key={item.id}
+             item={item} 
+             completed={item.completed} 
+             toggleTask={() => dispatch(toggleTask(item.id))} 
+             onChangeName={() => handleOpenChangeModal(item.id, item.name)} 
+             deleteTask={() => dispatch(deleteTask(item.id))} />
+          ))}
+        </ul>
+        <button
+          id="add-task-btn"
+          className="add-task-btn"
+          aria-label="Open the modal to prompt for new tasks to add"
+          onClick={handleOpenModal}
+        >
+          Add new to-do
+        </button>
+      </div>
+
+      <AddTaskModal isHidden={isHidden} onClose={handleCloseModal} />
+      <ChangeTaskModal isHidden={isChangeHidden} onClose={handleCloseChangeModal} onConfirm={handleConfirmChange} />
+    </>
+  );
+}
+
+export default Home;
